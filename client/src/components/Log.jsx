@@ -1,3 +1,5 @@
+/** @format */
+
 "use client";
 
 import React, { useState } from "react";
@@ -18,8 +20,8 @@ export const Log = () => {
   };
 
   return (
-    <div className="flex mt-16">
-      <div className="bg-white w-[708px] h-[1024px] flex flex-col items-center justify-center">
+    <div className="flex ">
+      <div className="bg-white w-[708px] h-full flex flex-col items-center justify-center">
         <div className="text-xl font-semibold">Geld</div>
         <br />
         <div className="text-2xl font-semibold">Welcome back</div>
@@ -60,7 +62,7 @@ export const Log = () => {
           </div>
         </div>
       </div>
-      <div className="bg-blue-500 w-[708px] h-[1024px]"></div>
+      <div className="bg-blue-500 w-1/2 h-full"></div>
     </div>
   );
 };
