@@ -1,28 +1,92 @@
+"use client";
+
+// import { Bottom } from "@/components/log-sign-comps/Bottom";
+// import HeadLogoText from "@/components/log-sign-comps/HeadLogoText";
+// import { HeadText } from "@/components/log-sign-comps/HeadText";
+// import { Input } from "@/components/log-sign-comps/Input";
+// import { Button } from "@/components/log-sign-comps/LoginButton";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { HeadLogoText } from "./HeadLogoText";
+import { HeadText } from "./HeadText";
+import { Button } from "./Button";
+import { Bottom } from "./Bottom";
+import { Inputt } from "./Inputt";
+import axios from "axios";
 import Link from "next/link";
-import React from "react";
-import { Log } from "./Log";
 
 export const LogInLog = () => {
-  const routers = [
-    {
-      title: "SignUp",
-      href: "signup",
-    },
-    {
-      title: "LogIn",
-      href: "login",
-    },
-  ];
+  const { push } = useRouter();
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUserData({ ...userData, [name]: value });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const result = await axios.post(
+        "http://localhost:8000/api/user/login",
+        userData
+      );
+      console.log(result.data);
+      push("/auth/goodjob");
+    } catch (error) {
+      console.log(error);
+      setError(error.response.data);
+    }
+  };
   return (
-    <div>
-      <Log />
-      <div className="h-[24px] flex gap-10">
-        {routers.map(({ href, title }) => (
-          <Link href={href} key={title}>
-            {title}
-          </Link>
-        ))}
+    <>
+      <div className="flex justify-center items-center">
+        <div className="flex  justify-center items-center w-1/2 h-screen ">
+          <div className="w-[384px] h-[554px] flex flex-col justify-center items-center gap-10">
+            <HeadLogoText />
+
+            <HeadText
+              headtext={"Welcome Back"}
+              desc={"Welcome back, Please enter your details"}
+            />
+
+            <div className="w-[384px] flex flex-col h-[304px] gap-4 ">
+              <form
+                className="w-[384px] flex flex-col h-[176px] gap-4"
+                onSubmit={handleSubmit}
+              >
+                <Inputt
+                  type="email"
+                  name="email"
+                  value={userData.email}
+                  placeholder="Email"
+                  onChange={handleChange}
+                />
+                <Inputt
+                  type="password"
+                  name="password"
+                  value={userData.password}
+                  placeholder="Password"
+                  onChange={handleChange}
+                />
+                <h1 className="text-red-700 flex justify-center items-center ">
+                  {error}
+                </h1>
+                <Button text={"Log In"} type="submit" />
+              </form>
+            </div>
+            <Link href={"/auth/signup"}>
+              <Bottom text={"Don’t have account?"} login={"Sign up"} />
+            </Link>
+          </div>
+        </div>
+        <div className="bg-[#0166FF] w-1/2 h-screen"></div>
       </div>
-    </div>
+    </>
   );
 };

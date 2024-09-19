@@ -1,35 +1,3 @@
-/** @format */
-
-// import Link from "next/link";
-// import React from "react";
-// import { Log } from "./Log";
-
-// export const LogInSign = () => {
-//   const routers = [
-//     {
-//       title: "SignUp",
-//       href: "signup",
-//     },
-//     {
-//       title: "LogIn",
-//       href: "login",
-//     },
-//   ];
-
-//   return (
-//     <div>
-//       <Log />
-//       <div className="h-[24px] flex gap-10">
-//         {routers.map(({ href, title }) => (
-//           <Link href={href} key={title}>
-//             {title}
-//           </Link>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
 "use client";
 
 // import { Bottom } from "@/components/log-sign-comps/Bottom";
@@ -37,14 +5,15 @@
 // import { HeadText } from "@/components/log-sign-comps/HeadText";
 // import { Input } from "@/components/log-sign-comps/Input";
 // import { Button } from "@/components/log-sign-comps/LoginButton";
-// import axios from "axios";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { HeadLogoText } from "./HeadLogoText";
 import { HeadText } from "./HeadText";
-import { Input } from "postcss";
 import { Button } from "./Button";
 import { Bottom } from "./Bottom";
+import { Inputt } from "./Inputt";
+import Link from "next/link";
 
 export const LogInSign = () => {
   const { push } = useRouter();
@@ -67,12 +36,13 @@ export const LogInSign = () => {
       return;
     }
     try {
-      const result = await axios.post(
-        "http://localhost:8000/api/user/signup",
-        userDetail
-      );
-      console.log(result.data);
-      push("/login");
+      const result = await axios.post("http://localhost:8000/api/user/signup", {
+        username: userDetail.name,
+        password: userDetail.password,
+        email: userDetail.email,
+      });
+
+      push("/auth/login");
     } catch (error) {
       setError(error.response.data);
     }
@@ -83,7 +53,7 @@ export const LogInSign = () => {
   return (
     <>
       <div className="flex justify-center items-center">
-        <div className="flex  justify-center items-center w-[708px] h-screen ">
+        <div className="flex  justify-center items-center w-1/2 h-screen ">
           <div className="w-[384px] h-[554px] flex flex-col justify-center items-center gap-10">
             <HeadLogoText />
 
@@ -93,25 +63,25 @@ export const LogInSign = () => {
             />
 
             <div className="w-[384px] flex flex-col h-[304px] gap-4 ">
-              <Input
+              <Inputt
                 type="text"
                 placeholder={"Name"}
                 name="name"
                 onChange={handleChange}
               />
-              <Input
+              <Inputt
                 type={"text"}
                 placeholder={"Email"}
                 name="email"
                 onChange={handleChange}
               />
-              <Input
+              <Inputt
                 type={"password"}
                 placeholder={"Password"}
                 name="password"
                 onChange={handleChange}
               />
-              <Input
+              <Inputt
                 onChange={handleChange}
                 type={"password"}
                 placeholder={"Re-Password"}
@@ -122,10 +92,12 @@ export const LogInSign = () => {
               </h1>
               <Button text={"Sign Up"} clickHandler={handleSignUpClick} />
             </div>
-            <Bottom text={"Already have account?"} login={"Log in"} />
+            <Link href={"/auth/login"}>
+              <Bottom text={"Already have account?"} login={"Log in"} />
+            </Link>
           </div>
         </div>
-        <div className="bg-[#0166FF] w-[708px] h-screen"></div>
+        <div className="bg-[#0166FF] w-1/2 h-screen"></div>
       </div>
     </>
   );

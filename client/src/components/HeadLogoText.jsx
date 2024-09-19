@@ -4,9 +4,9 @@ import React from "react";
 
 export const HeadLogoText = () => {
   return (
-    <div>
-      <img src="" alt="" />
-      <div>Geld</div>
+    <div className="flex justify-center items-center gap-2">
+      <img className="w-6 h-6" src="/image.png" alt="" />
+      <div className="text-2xl font-semibold">Geld</div>
     </div>
   );
 };
