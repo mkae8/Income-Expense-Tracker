@@ -1,10 +1,5 @@
 "use client";
 
-// import { Bottom } from "@/components/log-sign-comps/Bottom";
-// import HeadLogoText from "@/components/log-sign-comps/HeadLogoText";
-// import { HeadText } from "@/components/log-sign-comps/HeadText";
-// import { Input } from "@/components/log-sign-comps/Input";
-// import { Button } from "@/components/log-sign-comps/LoginButton";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -37,14 +32,14 @@ export const LogInSign = () => {
     }
     try {
       const result = await axios.post("http://localhost:8000/api/user/signup", {
-        username: userDetail.name,
+        name: userDetail.name,
         password: userDetail.password,
         email: userDetail.email,
       });
 
       push("/auth/login");
     } catch (error) {
-      setError(error.response.data);
+      setError("error");
     }
 
     console.log(userDetail);

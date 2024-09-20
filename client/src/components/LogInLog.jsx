@@ -1,10 +1,5 @@
 "use client";
 
-// import { Bottom } from "@/components/log-sign-comps/Bottom";
-// import HeadLogoText from "@/components/log-sign-comps/HeadLogoText";
-// import { HeadText } from "@/components/log-sign-comps/HeadText";
-// import { Input } from "@/components/log-sign-comps/Input";
-// import { Button } from "@/components/log-sign-comps/LoginButton";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { HeadLogoText } from "./HeadLogoText";
@@ -36,11 +31,14 @@ export const LogInLog = () => {
         "http://localhost:8000/api/user/login",
         userData
       );
-      console.log(result.data);
+
+      typeof window !== "undefined" &&
+        localStorage.setItem("token", result.data.token);
+
       push("/auth/goodjob");
     } catch (error) {
       console.log(error);
-      setError(error.response.data);
+      setError("error");
     }
   };
   return (

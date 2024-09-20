@@ -1,16 +1,10 @@
 {
   "users": [
     {
-      "userId": "5d994ff2-06fd-49f3-8c45-c627b0e5a558",
+      "userId": "98d045b6-7d8a-4c5f-9515-7baf40e7040c",
       "username": "a",
-      "email": "a",
-      "password": "$2a$10$.fxgDBfEJIqzFCV5338RKuoFQIxWM.GAmFyhc5thVTdTytiYwQ1Gi"
-    },
-    {
-      "userId": "6fb5737b-ae9a-4f24-8b94-3505e32e2ac8",
-      "username": "as",
       "email": "a@gmail.com",
-      "password": "$2a$10$yjyl2cSumXRLdE382WPx/etFk61lQBky98CRvmsrvgjba6X/jmHQC"
+      "password": "$2a$10$cZlxF.1ve6ZHptV7gKooLeVoFpSqRn83607J6.PzgTphdXAUd6xOS"
     }
   ]
 }
