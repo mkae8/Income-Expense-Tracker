@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { HeadLogoText } from "./HeadLogoText";
 import { HeadText } from "./HeadText";
 import { Button } from "./Button";
@@ -14,7 +14,7 @@ import { Loading } from "./Loading";
 export const LogInSign = () => {
   const { push } = useRouter();
   const [error, setError] = useState();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); // Ачааллын төлөвийг удирдана
   const [userDetail, setUserDetail] = useState({
     name: "",
     email: "",
@@ -33,6 +33,7 @@ export const LogInSign = () => {
       return;
     }
 
+    // Ачаалал эхлүүлнэ
     setLoading(true);
 
     try {
@@ -41,20 +42,24 @@ export const LogInSign = () => {
         password: userDetail.password,
         email: userDetail.email,
       });
+
+      // Ачаалал хийж дууссан ч зам солигдохыг хүлээнэ
       push("/auth/login");
     } catch (error) {
       setLoading(false);
-      setError("error");
+      setError("Error occurred during sign-up");
     }
   };
 
+  // Route солигдох үед ачааллыг гаргах
   if (loading) {
     return <Loading />;
   }
+
   return (
     <>
       <div className="flex justify-center items-center">
-        <div className="flex  justify-center items-center w-1/2 h-screen ">
+        <div className="flex justify-center items-center w-1/2 h-screen">
           <div className="w-[384px] h-[554px] flex flex-col justify-center items-center gap-10">
             <HeadLogoText />
 
@@ -63,7 +68,7 @@ export const LogInSign = () => {
               desc={"Sign up below to create your Wallet account"}
             />
 
-            <div className="w-[384px] flex flex-col h-[304px] gap-4 ">
+            <div className="w-[384px] flex flex-col h-[304px] gap-4">
               <Inputt
                 type="text"
                 placeholder={"Name"}
@@ -88,15 +93,16 @@ export const LogInSign = () => {
                 placeholder={"Re-Password"}
                 name="rePassword"
               />
-              <h1 className="text-red-700 flex justify-center items-center ">
+              <h1 className="text-red-700 flex justify-center items-center">
                 {error}
               </h1>
               <Button
                 text={"Sign Up"}
                 clickHandler={handleSignUpClick}
-                disabled={loading}
+                disabled={loading} // Ачаалж байх үед товчийг идэвхгүй болгоно
               />
             </div>
+
             <Link href={"/auth/login"}>
               <Bottom text={"Already have account?"} login={"Log in"} />
             </Link>
