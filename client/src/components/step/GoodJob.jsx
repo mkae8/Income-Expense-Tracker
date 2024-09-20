@@ -1,9 +1,9 @@
 import React from "react";
-import { HeadLogoText } from "./HeadLogoText";
+import { HeadLogoText } from "../HeadLogoText";
 import { Step } from "./Step";
 import { GoodJobCurency } from "./GoodJobCurency";
 import { Select } from "./Select";
-import { Button } from "./Button";
+import { Button } from "../Button";
 
 export const GoodJob = () => {
   const steps = ["Curency", "Balance", "Finish"];

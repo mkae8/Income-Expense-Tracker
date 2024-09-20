@@ -35,7 +35,7 @@ export const LogInLog = () => {
       typeof window !== "undefined" &&
         localStorage.setItem("token", result.data.token);
 
-      push("/auth/goodjob");
+      push("/auth/step");
     } catch (error) {
       console.log(error);
       setError("error");
