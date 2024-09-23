@@ -1,9 +1,10 @@
 {
   "users": [
     {
-      "userId": "86707f47-68b6-4f29-a495-6e7d079bf8f2",
+      "userId": "c4ac126f-cf74-4333-b4f3-8b9bdb988cab",
+      "username": "a",
       "email": "a@gmail.com",
-      "password": "$2a$10$j6K8Y.AB6zS3NZr.ak9Ci.h9F./fQDdaQylq3R7T7Ieg8sd8/zAQO"
+      "password": "$2a$10$PJCWXDgVAtldAE/uPChyiepmi6kcAD3udHbnkjXg5FPL/h7d5sCFq"
     }
   ]
 }

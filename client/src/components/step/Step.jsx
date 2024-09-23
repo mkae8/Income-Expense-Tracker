@@ -1,6 +1,6 @@
-/** @format */
-
 "use client";
+
+import axios from "axios";
 import React, { useState } from "react";
 import Curency from "./Curency";
 import Balance from "./Balance";
@@ -14,9 +14,33 @@ export const Step = () => {
   const [step, setStep] = useState(0);
   const StepComp = steps[step];
 
-  const contineHandler1 = () => {
+  const saveCurrency = async (currency) => {
+    try {
+      const token = localStorage.get("token");
+      const response = await axios.post(
+        "http://localhost:8000/api/users/",
+        {
+          currency: currency,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("Currency saved successfully:", response.data);
+    } catch (error) {
+      console.error("Error saving currency:", error);
+    }
+  };
+
+  const continueHandler1 = (currency) => {
+    if (step === 0) {
+      saveCurrency(currency);
+    }
+
     if (step === 2) {
-      push("/auth/dashboard");
+      push("/");
       return;
     }
     setStep((prev) => prev + 1);
@@ -24,7 +48,7 @@ export const Step = () => {
 
   return (
     <div>
-      <StepComp jump={contineHandler1} />
+      <StepComp jump={continueHandler1} />
     </div>
   );
 };

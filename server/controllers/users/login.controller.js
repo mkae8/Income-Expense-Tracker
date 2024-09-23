@@ -2,8 +2,8 @@ import { DbPath } from "../../utils/constant.js";
 import { readFileSync } from "fs";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-
-const SecretKey = "Libgun";
+import dotenv from "dotenv";
+dotenv.config();
 
 export const loginController = async (req, res) => {
   const { email, password } = req.body;
@@ -34,7 +34,7 @@ export const loginController = async (req, res) => {
     {
       userId: user.userId,
     },
-    SecretKey,
+    process.env.SECRET,
     { expiresIn: "1h" }
   );
 

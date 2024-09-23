@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { HeadLogoText } from "../HeadLogoText";
 import { Desc } from "./Desc";
 import { Select } from "./Select";
@@ -6,6 +6,8 @@ import { Button } from "../Button";
 
 const Curency = ({ jump }) => {
   const contineHandler = () => {
+    const [select, setSelect] = useState({});
+
     jump();
   };
 

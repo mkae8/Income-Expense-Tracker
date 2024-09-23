@@ -37,7 +37,7 @@ export const LogInSign = () => {
 
     try {
       const result = await axios.post("http://localhost:8000/api/user/signup", {
-        name: userDetail.name,
+        username: userDetail.name,
         password: userDetail.password,
         email: userDetail.email,
       });
