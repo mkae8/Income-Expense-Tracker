@@ -1,3 +1,5 @@
+/** @format */
+
 "use client";
 
 import { useRouter } from "next/navigation";
@@ -9,9 +11,11 @@ import { Bottom } from "./Bottom";
 import { Inputt } from "./Inputt";
 import axios from "axios";
 import Link from "next/link";
+import { Loading } from "./Loading";
 
 export const LogInLog = () => {
   const { push } = useRouter();
+  const [loading, setLoading] = useState(false);
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -26,6 +30,8 @@ export const LogInLog = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    setLoading(true);
+
     try {
       const result = await axios.post(
         "http://localhost:8000/api/user/login",
@@ -37,10 +43,15 @@ export const LogInLog = () => {
 
       push("/auth/step");
     } catch (error) {
-      console.log(error);
+      setLoading(false);
       setError("error");
     }
   };
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <div className="flex justify-center items-center">

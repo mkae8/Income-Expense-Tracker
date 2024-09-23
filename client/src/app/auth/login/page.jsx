@@ -1,3 +1,5 @@
+/** @format */
+
 import { LogInLog } from "@/components/LogInLog";
 
 const LoginPage = () => {

@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 
 export const Loading = () => {
@@ -31,11 +33,5 @@ export const Loading = () => {
         }
       `}</style>
     </div>
-    // <div className="w-screen h-screen">
-    //   <div className="flex gap-2 justify-center items-center">
-    //     loading
-    //     <span className="loading loading-spinner loading-lg"></span>
-    //   </div>
-    // </div>
   );
 };
