@@ -1,59 +1,3 @@
-/** @format */
-
-// "use client";
-
-// import axios from "axios";
-// import React, { useState } from "react";
-// import Curency from "./Curency";
-// import Balance from "./Balance";
-// import Good from "./Good";
-// import { useRouter } from "next/navigation";
-
-// const steps = [Curency, Balance, Good];
-
-// export const Step = () => {
-//   const { push } = useRouter();
-//   const [step, setStep] = useState(0);
-//   const StepComp = steps[step];
-
-//   const saveCurrency = async (currency) => {
-//     try {
-//       const token = localStorage.get("token");
-//       const response = await axios.post(
-//         "http://localhost:8000/api/users/",
-//         {
-//           currency: currency,
-//         },
-//         {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         }
-//       );
-//       console.log("Currency saved successfully:", response.data);
-//     } catch (error) {
-//       console.error("Error saving currency:", error);
-//     }
-//   };
-
-//   const continueHandler1 = (currency) => {
-//     if (step === 0) {
-//       saveCurrency(currency);
-//     }
-
-//     if (step === 2) {
-//       push("/");
-//       return;
-//     }
-//     setStep((prev) => prev + 1);
-//   };
-
-//   return (
-//     <div>
-//       <StepComp jump={continueHandler1} />
-//     </div>
-//   );
-// };
 "use client";
 
 import axios from "axios";
@@ -70,6 +14,7 @@ export const Step = () => {
   const [step, setStep] = useState(0);
   const StepComp = steps[step];
 
+  // Валютыг хадгалах функц
   const saveCurrency = async (currency) => {
     try {
       const token = localStorage.getItem("token");
@@ -82,23 +27,54 @@ export const Step = () => {
           },
         }
       );
-      console.log("Currency saved successfully:", response.data);
+      console.log("Валют амжилттай хадгалагдлаа:", response.data);
     } catch (error) {
-      console.error("Error saving currency:", error);
+      console.error("Валют хадгалахад алдаа гарлаа:", error);
     }
   };
 
-  const continueHandler1 = (currency) => {
-    if (step === 0) {
-      saveCurrency(currency);
+  // Төсвийг хадгалах функц
+  const saveBalance = async (balance) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        "http://localhost:8000/api/user/balance",
+        { balance },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("Төсөв амжилттай хадгалагдлаа:", response.data);
+    } catch (error) {
+      console.error("Төсөв хадгалахад алдаа гарлаа:", error);
     }
+  };
 
-    if (step === 2) {
-      push("/");
-      return;
+  // Үргэлжлүүлэх функц
+  const continueHandler1 = async (currency, balance) => {
+    try {
+      if (step === 0) {
+        await saveCurrency(currency); // Валютыг хадгална
+        setStep((prev) => prev + 1);
+        return;
+      }
+
+      if (step === 1) {
+        await saveBalance(balance); // Төсвийг хадгална
+        setStep((prev) => prev + 1);
+        return;
+      }
+
+      if (step === 2) {
+        push("/auth/dashboard"); // Дашбоард руу шилжүүлнэ
+        return;
+      }
+      // Дараагийн алхам руу шилжүүлнэ
+    } catch (err) {
+      console.log("Алдаа:", err.message);
     }
-
-    setStep((prev) => prev + 1);
   };
 
   return (

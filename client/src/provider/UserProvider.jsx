@@ -20,7 +20,7 @@ export const UserProvider = ({ children }) => {
       if (result.data.token) {
         window.localStorage.setItem("token", result.data.token);
         setIsLoggedIn(true);
-        router.push("/");
+        router.push("/auth/dashboard");
       }
     } catch (error) {
       console.error("Логин хийхэд алдаа гарлаа:", error.message);
@@ -37,7 +37,7 @@ export const UserProvider = ({ children }) => {
     const token = window.localStorage.getItem("token");
     if (token) {
       setIsLoggedIn(true);
-      router.push("/auth/step");
+      router.push("/auth/dashboard");
     } else {
       setIsLoggedIn(false);
       router.push("/auth/login");

@@ -1,10 +1,34 @@
 {
   "users": [
     {
-      "userId": "91e67749-71b9-4796-b12b-7d305ec15f01",
-      "username": "a",
-      "email": "a@gmail.com",
-      "password": "$2a$10$A7HDX46x5mcyOYEmSY5qsuKTrhnLk4Zk4yht2ebSZs676Q07c7696"
+      "userId": "b6e6273c-3c54-4718-94ba-67f532087b15",
+      "username": "b",
+      "email": "b@gmail.com",
+      "password": "$2a$10$KM0huKNnpRvgo9vf.HEAO.MVQR3nNpMylqjRUN2vZMIcr2ZIr3GXG",
+      "currency": "MNT - Mongolian Tugrik",
+      "balance": 0
+    },
+    {
+      "userId": "a321367e-cc72-4bbc-b07d-a9ec4f282c31",
+      "username": "123",
+      "email": "123",
+      "password": "$2a$10$j7yuPDjK4gw3wLpHFLb/IexaeiLLlQyqqW6cj9X1UDsfEojiUimai"
+    },
+    {
+      "userId": "71ee3153-a4b0-48b5-a954-618703235ac1",
+      "username": "awsd",
+      "email": "123@gmail.com",
+      "password": "$2a$10$iFbTeku5vBVE792XJL7PqOiBHKjm8bhnoez2Kh/T1zYEXCv7gGc6O",
+      "currency": "MNT - Mongolian Tugrik",
+      "balance": 123
+    },
+    {
+      "userId": "cdccdc97-8ee8-4858-b05b-9ddd139b0d9b",
+      "username": "baldan",
+      "email": "baldka@gmail.com",
+      "password": "$2a$10$ghtDJP94tTHspopjybSy6ePaG4ulZIHNt25w2JZEE9R6wCvn48.li",
+      "currency": "USD - US DOLLAR",
+      "balance": 123123
     }
   ]
 }

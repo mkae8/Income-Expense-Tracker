@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 
 export const Inputt = ({ type, placeholder, name, value, onChange }) => {

@@ -2,9 +2,8 @@ import React from "react";
 import { HeadLogoText } from "../HeadLogoText";
 import { Desc } from "./Desc";
 import { Button } from "../Button";
-import { Inputt } from "../Inputt";
 
-const Good = () => {
+const Good = ({ jump }) => {
   return (
     <div className="flex flex-col  items-center h-screen">
       <div className="flex mt-10">
@@ -25,7 +24,7 @@ const Good = () => {
           and start tracking
         </div>
         <div className="flex pt-6">
-          <Button text={"Go to Dashboard"} />
+          <Button clickHandler={jump} text={"Go to Dashboard"} />
         </div>
       </div>
     </div>
