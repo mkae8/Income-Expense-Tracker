@@ -17,7 +17,7 @@ export const UserProvider = ({ children }) => {
         password,
       });
 
-      if (result.data.token) {
+      if (result?.data?.token) {
         window.localStorage.setItem("token", result.data.token);
         setIsLoggedIn(true);
         router.push("/auth/dashboard");

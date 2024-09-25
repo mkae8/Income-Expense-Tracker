@@ -3,7 +3,6 @@ import { readFileSync, writeFileSync } from "fs"; // writeFileSync импорт�
 
 export const curencyController = async (req, res, next) => {
   const { currency } = req.body; // Хэрэглэгчээс валютын мэдээллийг авах
-  console.log(currency);
 
   const { userId } = res.locals;
 

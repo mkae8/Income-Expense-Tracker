@@ -35,7 +35,7 @@ export const loginController = async (req, res) => {
       userId: user.userId,
     },
     process.env.SECRET,
-    { expiresIn: "1h" }
+    { expiresIn: "1d" }
   );
 
   res.status(200).send({ msg: "Амжилттай нэвтэрлээ.", token });

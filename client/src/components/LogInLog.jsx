@@ -29,7 +29,6 @@ export const LogInLog = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     setLoading(true);
 
     try {

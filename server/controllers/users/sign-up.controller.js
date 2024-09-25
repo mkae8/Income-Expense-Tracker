@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from "fs";
 import { v4 as uuid } from "uuid";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
-import { DbPath } from "../../utils/constant.js";
+import { DbPath } from "../../utils/constant.js"; //DATABASE_URL "./"
 dotenv.config();
 
 export const signUpController = async (req, res) => {
@@ -24,7 +24,6 @@ export const signUpController = async (req, res) => {
       res
         .status(400)
         .send("Энэ хэрэглэгчийн нэр эсвэл и-мэйл аль хэдийн бүртгэгдсэн байна");
-
       return;
     }
 
