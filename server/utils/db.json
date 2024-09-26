@@ -1,12 +1,12 @@
 {
   "users": [
     {
-      "userId": "469c7507-f0de-45bc-bc37-094fe4c0ef7e",
+      "userId": "981131b3-83da-40ac-bcf0-adec0eb37457",
       "username": "a",
       "email": "a@gmail.com",
-      "password": "$2a$10$noEcYxAOexDv8sCrUeDcLe9pz95SP5rEe8GPHMFC2h5K9xensPAHm",
+      "password": "$2a$10$0NLcvFIsoIDgrmwrIFeuYeg4QulkQyAWORVxOf98R5UhGHfRRyFWG",
       "currency": "USD - US DOLLAR",
-      "balance": 1000
+      "balance": 1002221231245
     }
   ],
   "expence": [],

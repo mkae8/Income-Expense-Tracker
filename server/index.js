@@ -5,6 +5,8 @@ import userRouter from "./routers/user.router.js";
 import categoryRouter from "./routers/category.router.js";
 import currencyRouter from "./routers/currency.router.js";
 import balanceRouter from "./routers/balance.router.js";
+import checkRouter from "./routers/check.router.js";
+import incomeRouter from "./routers/income.router.js";
 
 // .env файлыг унших
 env.config({ path: "./.env" });
@@ -21,6 +23,8 @@ app.use("/api", userRouter);
 app.use("/api", categoryRouter);
 app.use("/api", currencyRouter);
 app.use("/api", balanceRouter);
+app.use("/api", checkRouter);
+app.use("/api", incomeRouter);
 
 // Серверийг ажиллуулах
 app.listen(port, () =>

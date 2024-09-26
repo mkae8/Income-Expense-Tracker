@@ -20,6 +20,7 @@ export const curencyController = async (req, res, next) => {
         return el;
       }
     });
+
     data.users = updatedData;
     await writeFileSync(DbPath, JSON.stringify(data, null, 2), "utf-8"); // Өгөгдлийг дахин хадгалах
 
