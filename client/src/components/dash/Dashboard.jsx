@@ -1,4 +1,5 @@
 import Header from "./Header";
+import { Chartt } from "./Chartt";
 import { Test } from "./Test";
 
 export const Dashboard = () => {
@@ -6,6 +7,7 @@ export const Dashboard = () => {
     <div>
       <Header />
       <Test />
+      <Chartt />
     </div>
   );
 };

@@ -1,4 +1,4 @@
 /** @format */
 
 export const DbPath =
-  "/Users/bilguundavaadorj/income-and-expence-tracker/server/utils/db.json";
+  "/Users/24LP0612/Desktop/income-and-expence-tracker/server/utils/db.json";

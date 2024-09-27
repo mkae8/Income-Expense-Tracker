@@ -1,11 +1,10 @@
-/** @format */
-
 "use client";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export const Test = () => {
-  const [curency, setCurency] = useState();
+// Test компонент
+export const Test = ({ chartData }) => {
+  const [currency, setCurrency] = useState();
   const [balance, setBalance] = useState();
   const [error, setError] = useState(null);
 
@@ -18,9 +17,8 @@ export const Test = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
 
-        // setCurency(response.data.curency);
         setBalance(response.data.balance);
-        setError(null); // Clear any previous errors
+        setError(null);
       } catch (error) {
         setError(error.message);
       }
@@ -29,39 +27,58 @@ export const Test = () => {
   }, []);
 
   return (
-    <div className="flex px-[30px] justify-between items-center mx-auto">
-      <div className="flex gap-3">
-        <div className="relative mt-16">
-          <div className="flex absolute top-5 left-5 h-[29.86px] w-[80.35px]">
-            <img src="/image copy 8.png" alt="" />
-          </div>
-          <img
-            className="w-[384.12px] h-[219.66px] rounded-2xl"
-            src="/income .png"
-            alt=""
-          />
-          <div className="flex absolute bottom-14 left-5 text-gray-100">
-            Cash
-          </div>
-          <div className="text-white flex absolute left-5 bottom-6 font-semibold text-2xl ">
-            {balance}
-          </div>
-        </div>
+    <div className="flex gap-3 px-32 mx-auto justify-between">
+      <div className="relative mt-16">
         <img
-          className="w-[384.12px] h-[219.66px]"
-          src="/image copy 6.png"
+          className="flex absolute top-5 left-5 h-[29.86px] w-[80.35px]"
+          src="/image copy 8.png"
           alt=""
         />
-        <img
-          className="w-[384.12px] h-[219.66px]"
-          src="/image copy 7.png"
-          alt=""
-        />
-      </div>
-      {/* <div>{curency}</div> */}
 
-      {/* Error handling display */}
-      {error && <div className="text-red-500 mt-4">Error: {error}</div>}
+        <img
+          className="w-[384.12px] h-[219.66px] rounded-2xl"
+          src="/income .png"
+          alt=""
+        />
+        <div className="flex absolute bottom-14 left-5 text-gray-100">Cash</div>
+        <div className="text-white flex absolute left-5 bottom-6 font-semibold text-2xl ">
+          {balance}
+        </div>
+      </div>
+      <div className="relative mt-16">
+        <img
+          className="flex absolute top-5 left-5 h-[29.86px] w-[80.35px]"
+          src="/image copy 8.png"
+          alt=""
+        />
+
+        <img
+          className="w-[384.12px] h-[219.66px] rounded-2xl"
+          src="/income .png"
+          alt=""
+        />
+        <div className="flex absolute bottom-14 left-5 text-gray-100">Cash</div>
+        <div className="text-white flex absolute left-5 bottom-6 font-semibold text-2xl ">
+          {balance}
+        </div>
+      </div>
+      <div className="relative mt-16">
+        <img
+          className="flex absolute top-5 left-5 h-[29.86px] w-[80.35px]"
+          src="/image copy 8.png"
+          alt=""
+        />
+
+        <img
+          className="w-[384.12px] h-[219.66px] rounded-2xl"
+          src="/income .png"
+          alt=""
+        />
+        <div className="flex absolute bottom-14 left-5 text-gray-100">Cash</div>
+        <div className="text-white flex absolute left-5 bottom-6 font-semibold text-2xl ">
+          {balance}
+        </div>
+      </div>
     </div>
   );
 };
