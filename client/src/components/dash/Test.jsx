@@ -27,8 +27,8 @@ export const Test = ({ chartData }) => {
   }, []);
 
   return (
-    <div className="flex gap-3 px-32 mx-auto justify-between">
-      <div className="relative mt-16">
+    <div className="flex gap-6 px-32 justify-between ">
+      <div className="relative mt-6 w-[384.12] h-[219.66px]">
         <img
           className="flex absolute top-5 left-5 h-[29.86px] w-[80.35px]"
           src="/image copy 8.png"
@@ -45,7 +45,7 @@ export const Test = ({ chartData }) => {
           {balance}
         </div>
       </div>
-      <div className="relative mt-16">
+      <div className="relative mt-6 w-[384.12px] h-[219.66px]">
         <img
           className="flex absolute top-5 left-5 h-[29.86px] w-[80.35px]"
           src="/image copy 8.png"
@@ -62,7 +62,7 @@ export const Test = ({ chartData }) => {
           {balance}
         </div>
       </div>
-      <div className="relative mt-16">
+      <div className="relative mt-6 w-[384.12px] h-[219.66px]">
         <img
           className="flex absolute top-5 left-5 h-[29.86px] w-[80.35px]"
           src="/image copy 8.png"

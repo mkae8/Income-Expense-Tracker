@@ -7,6 +7,13 @@
       "password": "$2a$10$0NLcvFIsoIDgrmwrIFeuYeg4QulkQyAWORVxOf98R5UhGHfRRyFWG",
       "currency": "USD - US DOLLAR",
       "balance": 123423
+    },
+    {
+      "userId": "3f482460-540e-4f59-afa0-05e3ec6b8d60",
+      "username": "tsno",
+      "email": "tsno@gmail.com",
+      "password": "$2a$10$b5PfMx5afboPPyOoTCIqmOCFYkQ53zZoZVSDAU3LraTBc6NoFLJPi",
+      "balance": 11
     }
   ],
   "expence": [],
