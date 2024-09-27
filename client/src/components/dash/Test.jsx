@@ -1,12 +1,13 @@
+/** @format */
+
 "use client";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { HeadLogoText } from "../HeadLogoText";
 
 export const Test = () => {
   const [curency, setCurency] = useState();
   const [balance, setBalance] = useState();
-  const [error, setError] = useState();
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,8 +18,9 @@ export const Test = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
 
-        setCurency(response.data.curency);
+        // setCurency(response.data.curency);
         setBalance(response.data.balance);
+        setError(null); // Clear any previous errors
       } catch (error) {
         setError(error.message);
       }
@@ -27,7 +29,7 @@ export const Test = () => {
   }, []);
 
   return (
-    <div className="flex w-[1440px] justify-between items-center mx-auto">
+    <div className="flex px-[30px] justify-between items-center mx-auto">
       <div className="flex gap-3">
         <div className="relative mt-16">
           <div className="flex absolute top-5 left-5 h-[29.86px] w-[80.35px]">
@@ -38,7 +40,7 @@ export const Test = () => {
             src="/income .png"
             alt=""
           />
-          <div className=" flex absolute bottom-14 left-5 text-gray-100">
+          <div className="flex absolute bottom-14 left-5 text-gray-100">
             Cash
           </div>
           <div className="text-white flex absolute left-5 bottom-6 font-semibold text-2xl ">
@@ -56,7 +58,10 @@ export const Test = () => {
           alt=""
         />
       </div>
-      <div>{curency}</div>
+      {/* <div>{curency}</div> */}
+
+      {/* Error handling display */}
+      {error && <div className="text-red-500 mt-4">Error: {error}</div>}
     </div>
   );
 };

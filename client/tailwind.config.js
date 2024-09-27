@@ -1,3 +1,7 @@
+/** @format */
+
+const { default: daisyui } = require("daisyui");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -12,6 +16,17 @@ module.exports = {
         foreground: "var(--foreground)",
       },
     },
+  },
+  plugins: [require("daisyui")],
+};
+
+module.export = {
+  content: ["./src/**/8.{js,jsx,ts,tsx", "./public/index.html"],
+  theme: {
+    extend: {},
+  },
+  daisyui: {
+    themes: ["light", "dark", "cupcake"],
   },
   plugins: [require("daisyui")],
 };

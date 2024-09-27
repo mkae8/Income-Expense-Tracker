@@ -1,3 +1,5 @@
+/** @format */
+
 "use client";
 import { useUser } from "@/provider/UserProvider";
 import React from "react";
@@ -18,7 +20,7 @@ export default function Header() {
   ];
   return (
     <div>
-      <div className="flex w-[1440px] h-[72px] justify-between items-center mx-auto">
+      <div className="flex px-32 h-[72px] justify-between items-center mx-auto">
         <div className="flex  justify-center items-center">
           <HeadLogoText />
           <div className="h-[24px] flex gap-7 ml-7">
