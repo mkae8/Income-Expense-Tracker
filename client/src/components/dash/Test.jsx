@@ -15,6 +15,7 @@ export const Test = ({ chartData }) => {
         const response = await axios("http://localhost:8000/api/user/income", {
           headers: { Authorization: `Bearer ${token}` },
         });
+        console.log(response);
 
         setBalance(response.data.balance);
         setError(null);

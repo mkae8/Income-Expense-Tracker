@@ -1,11 +1,11 @@
 import { sql } from "../../database/index.js";
 
 export const income = async (req, res) => {
-  const { userId } = res.locals;
+  const { userid } = res.locals;
 
   try {
     const result = await sql`
-      SELECT * FROM users WHERE userid = ${userId}
+      SELECT * FROM users WHERE userid = ${userid}
     `;
 
     if (result.length === 0) {
