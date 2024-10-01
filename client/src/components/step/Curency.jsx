@@ -3,12 +3,27 @@ import { HeadLogoText } from "../HeadLogoText";
 import { Desc } from "./Desc";
 import { Select } from "./Select";
 import { Button } from "../Button";
+import axios from "axios";
+import { useUser } from "@/provider/UserProvider";
 
 const Curency = ({ jump }) => {
-  const [select, setSelect] = useState("MNT - Mongolian Tugrik"); // Move useState here
+  const { token } = useUser();
+  const [select, setSelect] = useState("MNT");
 
-  const contineHandler = () => {
-    jump(select);
+  const contineHandler = async () => {
+    try {
+      await axios.post(
+        "http://localhost:8000/api/user/currency",
+        {
+          currency: select,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      jump(select);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

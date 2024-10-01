@@ -1,12 +1,21 @@
-import fs from "fs";
-import { DbPath } from "../../utils/constant.js";
+import { sql } from "../../database/index.js";
 
 export const income = async (req, res) => {
   const { userId } = res.locals;
 
-  const resultJson = await fs.readFileSync(DbPath, "utf-8");
-  const result = JSON.parse(resultJson);
+  try {
+    const result = await sql`
+      SELECT * FROM users WHERE userid = ${userId}
+    `;
 
-  const user = result.users.find((user) => user.userId === userId);
-  res.send(user);
+    if (result.length === 0) {
+      return res.status(404).json({ message: "User not found." });
+    }
+    const user = result[0];
+
+    res.json(user);
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    res.status(500).json({ message: "Internal server error." });
+  }
 };

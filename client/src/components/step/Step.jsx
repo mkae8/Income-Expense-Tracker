@@ -1,5 +1,3 @@
-/** @format */
-
 "use client";
 
 import axios from "axios";
@@ -17,66 +15,61 @@ export const Step = () => {
   const StepComp = steps[step];
 
   // Валютыг хадгалах функц
-  const saveCurrency = async (currency) => {
-    try {
-      const token = localStorage.getItem("token");
-      const response = await axios.post(
-        "http://localhost:8000/api/user/currency",
-        { currency },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log("Валют амжилттай хадгалагдлаа:", response.data);
-    } catch (error) {
-      console.error("Валют хадгалахад алдаа гарлаа:", error);
-    }
-  };
+  // const saveCurrency = async (currency) => {
+  //   try {
+  //     const token = localStorage.getItem("token");
+  //     const response = await axios.post(
+  //       "http://localhost:8000/api/user/currency",
+  //       { currency },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     );
+  //     console.log("Валют амжилттай хадгалагдлаа:", response.data);
+  //   } catch (error) {
+  //     console.error("Валют хадгалахад алдаа гарлаа:", error);
+  //   }
+  // };
 
   // Төсвийг хадгалах функц
-  const saveBalance = async (balance) => {
-    try {
-      const token = localStorage.getItem("token");
-      const response = await axios.post(
-        "http://localhost:8000/api/user/balance",
-        { balance },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log("Төсөв амжилттай хадгалагдлаа:", response.data);
-    } catch (error) {
-      console.error("Төсөв хадгалахад алдаа гарлаа:", error);
-    }
-  };
+  // const saveBalance = async (balance) => {
+  //   try {
+  //     const token = localStorage.getItem("token");
+  //     const response = await axios.post(
+  //       "http://localhost:8000/api/user/balance",
+  //       { balance },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     );
+  //     console.log("Төсөв амжилттай хадгалагдлаа:", response.data);
+  //   } catch (error) {
+  //     console.error("Төсөв хадгалахад алдаа гарлаа:", error);
+  //   }
+  // };
 
-  // 1. Backend deeree get balance token ym irvel yaahuu baina gsn ug push
-  // 2. zereg shalgah 1 udaa tgd chamd ireh ve gevel {curL: "123", bal: "setste(1)"  }
-
-  // Үргэлжлүүлэх функц
   const continueHandler1 = async (currency, balance) => {
     try {
       if (step === 0) {
-        await saveCurrency(currency); // Валютыг хадгална
+        // await saveCurrency(currency); // Валютыг хадгална
         setStep((prev) => prev + 1);
         return;
       }
 
       if (step === 1) {
-        await saveBalance(balance); // Төсвийг хадгална
+        // await saveBalance(balance); // Төсвийг хадгална
         setStep((prev) => prev + 1);
         return;
       }
 
       if (step === 2) {
-        push("/auth/dashboard"); // Дашбоард руу шилжүүлнэ
+        push("/auth/dashboard");
         return;
       }
-      // Дараагийн алхам руу шилжүүлнэ
     } catch (err) {
       console.log("Алдаа:", err.message);
     }

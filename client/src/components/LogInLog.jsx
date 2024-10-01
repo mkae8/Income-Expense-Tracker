@@ -42,6 +42,8 @@ export const LogInLog = () => {
 
       push("/auth/step");
     } catch (error) {
+      console.log(error);
+
       setLoading(false);
       setError("error");
     }

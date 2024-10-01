@@ -3,27 +3,22 @@ import { readFileSync } from "fs";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import { sql } from "../../database/index.js";
 dotenv.config();
 
 export const loginController = async (req, res) => {
   const { email, password } = req.body;
+  const success = true;
 
-  const resultJson = await readFileSync(DbPath, "utf-8");
-  const result = JSON.parse(resultJson);
+  const user = await sql`SELECT * FROM users WHERE email=${email}`;
 
-  if (!email || !password) {
-    res.status(400).send("Имэйл эсвэл нууц үг хоосон байна.");
+  if (user.length === 0) {
+    success == false;
+    res.status(400).send("User baihgui baian ugsun email deer");
     return;
   }
 
-  const user = result.users.find((el) => el.email === email);
-
-  if (!user) {
-    res.status(400).send("Хэрэглэгчийн бүртгэл олдсонгүй.");
-    return;
-  }
-
-  const doesPasswordMatch = await bcrypt.compare(password, user.password);
+  const doesPasswordMatch = await bcrypt.compare(password, user[0].password);
 
   if (!doesPasswordMatch) {
     res.status(400).send("Нууц үг буруу байна.");
@@ -32,11 +27,11 @@ export const loginController = async (req, res) => {
 
   const token = jwt.sign(
     {
-      userId: user.userId,
+      userid: user[0].userid,
     },
     process.env.SECRET,
     { expiresIn: "1d" }
   );
 
-  res.status(200).send({ msg: "Амжилттай нэвтэрлээ.", token });
+  res.status(200).send({ msg: success, user, token });
 };

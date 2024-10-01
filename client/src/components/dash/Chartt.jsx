@@ -55,7 +55,7 @@ export const Chartt = () => {
   };
 
   return (
-    <div className="flex px-32  justify-between">
+    <div className="flex justify-between gap-5">
       <div className="flex flex-col w-[588px] h-[284px]  rounded-md bg-white">
         <div className="font-semibold text-base text-[#0F172A] pl-6 py-4 border-b border-gray-200">
           Income - Expense
@@ -73,7 +73,7 @@ export const Chartt = () => {
         <div className="flex flex-col w-[588px] h-[284px] rounded-md bg-white">
           <div className="flex justify-between px-5 border-b border-gray-200">
             <div className="font-semibold text-base text-[#0F172A] pl-6 py-4">
-              My Doughnut Chart
+              Income - Expense
             </div>
             <div className="py-4 pr-6">publishedAt</div>
           </div>

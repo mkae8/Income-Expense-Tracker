@@ -2,7 +2,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-// Test компонент
 export const Test = ({ chartData }) => {
   const [currency, setCurrency] = useState();
   const [balance, setBalance] = useState();
@@ -27,7 +26,7 @@ export const Test = ({ chartData }) => {
   }, []);
 
   return (
-    <div className="flex gap-6 px-32 justify-between ">
+    <div className="flex gap-6  justify-between ">
       <div className="relative mt-6 w-[384.12] h-[219.66px]">
         <img
           className="flex absolute top-5 left-5 h-[29.86px] w-[80.35px]"

@@ -9,6 +9,7 @@ export const UserContext = createContext(null);
 export const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
+  const [localToken, setLocalToken] = useState("");
 
   const loginHandlerFunc = async (email, password) => {
     try {
@@ -37,16 +38,22 @@ export const UserProvider = ({ children }) => {
     const token = window.localStorage.getItem("token");
     if (token) {
       setIsLoggedIn(true);
+      setLocalToken(token);
       router.push("/auth/dashboard");
     } else {
       setIsLoggedIn(false);
       router.push("/auth/login");
     }
-  }, []);
+  }, [localToken]);
 
   return (
     <UserContext.Provider
-      value={{ isLoggedIn, loginHandlerFunc, logoutHandlerFunc }}
+      value={{
+        isLoggedIn,
+        loginHandlerFunc,
+        logoutHandlerFunc,
+        token: localToken,
+      }}
     >
       {children}
     </UserContext.Provider>

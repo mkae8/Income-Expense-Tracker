@@ -1,33 +1,21 @@
-import { readFileSync, writeFileSync } from "fs";
-import { DbPath } from "../../utils/constant.js";
+import { sql } from "../../database/index.js";
 
 export const balanceController = async (req, res, next) => {
   const { balance } = req.body;
-  console.log(balance);
 
-  const { userId } = res.locals;
+  const { userid } = res.locals;
 
   try {
-    // Файлыг уншина
-    const resultJson = await readFileSync(DbPath, "utf-8");
-    const data = JSON.parse(resultJson);
+    const result =
+      await sql`UPDATE users SET balance=${balance} WHERE userid = ${userid}`;
 
-    // Хэрэглэгчийн баланс шинэчилнэ
-    const updatedData = data.users.map((el) => {
-      if (el.userId === userId) {
-        return { ...el, balance: Number(balance) };
-      }
-      return el; // Бусад хэрэглэгчийн мэдээллийг үлдээх
-    });
+    if (result.count === 0) {
+      return res.status(404).json({ message: "balance oroogui bn" });
+    }
 
-    data.users = updatedData;
-    await writeFileSync(DbPath, JSON.stringify(data, null, 2), "utf-8");
-
-    res
-      .status(200)
-      .send({ msg: "Төсөв амжилттай хадгалагдлаа", data: updatedData });
+    res.status(200).json({ message: "Balance updated successfully." });
   } catch (error) {
-    console.error("Алдаа:", error);
-    res.status(500).send({ msg: "Мэдээлэл уншихад алдаа гарлаа" });
+    console.error(error);
+    res.status(500).json({ message: "Internal server error." });
   }
 };

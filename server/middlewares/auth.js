@@ -13,9 +13,9 @@ export const authMiddleware = async (req, res, next) => {
     if (err) {
       return res.status(401).send({ msg: "Invalid token provided" });
     }
-
+    console.log(decoded.userid);
     // Токен амжилттай баталгаажсан
-    res.locals.userId = decoded.userId;
+    res.locals.userid = decoded.userid;
     next();
   });
 };

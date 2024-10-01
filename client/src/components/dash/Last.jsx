@@ -2,8 +2,8 @@ import React from "react";
 
 export const Last = () => {
   return (
-    <div className="flex px-32 pb-10">
-      <div className="rounded-md h-[456px] w-full bg-white ">
+    <div className="flex w-[1200px] pb-5 ">
+      <div className="rounded-md max-h-full w-full bg-white ">
         <div className="flex pl-8 border-b border-gray-200 h-[56px] items-center font-semibold text-base">
           Last Records
         </div>

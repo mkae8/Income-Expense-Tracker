@@ -7,7 +7,7 @@ import currencyRouter from "./routers/currency.router.js";
 import balanceRouter from "./routers/balance.router.js";
 import checkRouter from "./routers/check.router.js";
 import incomeRouter from "./routers/income.router.js";
-
+import testRouter from "./routers/test.router.js";
 // .env файлыг унших
 env.config({ path: "./.env" });
 
@@ -25,6 +25,7 @@ app.use("/api", currencyRouter);
 app.use("/api", balanceRouter);
 app.use("/api", checkRouter);
 app.use("/api", incomeRouter);
+app.use("/api", testRouter);
 
 // Серверийг ажиллуулах
 app.listen(port, () =>
