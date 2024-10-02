@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 import path from "path";
 
-const DbPath = path.resolve(__dirname, "db.json");
+// const DbPath = path.resolve(__dirname, "db.json");
 
 export const asd = async (req, res) => {
   try {
