@@ -1,5 +1,6 @@
 /** @format */
 
+const { light } = require("@mui/material/styles/createPalette");
 const { default: daisyui } = require("daisyui");
 
 /** @type {import('tailwindcss').Config} */
@@ -22,9 +23,6 @@ module.exports = {
 
 module.export = {
   content: ["./src/**/8.{js,jsx,ts,tsx", "./public/index.html"],
-  theme: {
-    extend: {},
-  },
   daisyui: {
     themes: ["light", "dark", "cupcake"],
   },

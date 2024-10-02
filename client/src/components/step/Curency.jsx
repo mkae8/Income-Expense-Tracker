@@ -22,7 +22,7 @@ const Curency = ({ jump }) => {
 
       jump(select);
     } catch (error) {
-      console.log(error);
+      error;
     }
   };
 

@@ -5,7 +5,7 @@ const DbPath = path.resolve(__dirname, "db.json");
 
 export const asd = async (req, res) => {
   try {
-    const { currency } = req.body; // Ensure this is passed in the request
+    const { currency } = req.body;
     const { userId } = res.locals;
 
     const resultJson = readFileSync(DbPath, "utf-8");

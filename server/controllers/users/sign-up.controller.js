@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
 import { sql } from "../../database/index.js";
-import { DbPath } from "../../utils/constant.js"; //DATABASE_URL "./"
+
 dotenv.config();
 
 export const signUpController = async (req, res) => {
@@ -16,15 +16,16 @@ export const signUpController = async (req, res) => {
     return;
   }
 
-  const userId = uuid();
+  const userid = uuid();
 
   const createdAt = new Date();
 
   const hashedPassword = bcrypt.hashSync(password, 10);
 
-  await sql`INSERT INTO users(userId, username, email, password, createdAt) VALUES( ${userId}, ${username}, ${email}, ${hashedPassword}, ${createdAt})`;
+  const result =
+    await sql`INSERT INTO users(userid, username, email, password, createdAt) VALUES( ${userid}, ${username}, ${email}, ${hashedPassword}, ${createdAt})`;
 
-  res.status(200).send("success");
+  res.status(200).send(result);
 
   // try {
 

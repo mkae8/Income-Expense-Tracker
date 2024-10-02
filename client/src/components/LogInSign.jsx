@@ -41,6 +41,8 @@ export const LogInSign = () => {
         password: userDetail.password,
         email: userDetail.email,
       });
+      console.log();
+
       push("/auth/login");
     } catch (error) {
       setLoading(false);

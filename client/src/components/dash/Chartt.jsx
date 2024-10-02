@@ -28,9 +28,9 @@ export const Chartt = () => {
     labels: [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
     datasets: [
       {
-        label: "# of Votes",
-        data: [12, 19, 21, 2, 32],
-        backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
+        label: "",
+        data: [1000000, 2000000, 3000000],
+        backgroundColor: ["#84CC16", "#F97316"],
         borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
         borderWidth: 1,
       },
@@ -38,18 +38,19 @@ export const Chartt = () => {
   };
 
   const dataDoughnut = {
-    labels: ["Red", "Blue", "Yellow", "sdad"],
+    labels: ["Bills", "Food", "Shopping", "Insurance", "Clothing"],
     datasets: [
       {
         label: "My First Dataset",
-        data: [300, 50, 100, 40],
+        data: [150, 50, 100, 80, 200],
         backgroundColor: [
-          "rgb(255, 99, 132)",
-          "rgb(54, 162, 235)",
-          "rgb(255, 205, 86)",
-          "rgb(59, 145, 246)",
+          "#1C64F2",
+          "#E74694",
+          "#FDBA8C",
+          "#16BDCA",
+          "#F2901C",
         ],
-        hoverOffset: 4,
+        hoverOffset: 8,
       },
     ],
   };
@@ -77,8 +78,9 @@ export const Chartt = () => {
             </div>
             <div className="py-4 pr-6">publishedAt</div>
           </div>
-          <div className="w-[588px] h-[226px] px-5 py-5">
+          <div className="w-[588px] h-[226px] px-5 py-5 flex">
             <Doughnut
+              style={{ display: "flex" }}
               data={dataDoughnut}
               options={{
                 maintainAspectRatio: false,

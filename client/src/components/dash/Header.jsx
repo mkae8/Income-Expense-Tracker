@@ -5,6 +5,7 @@ import { useUser } from "@/provider/UserProvider";
 import React from "react";
 import Link from "next/link";
 import { HeadLogoText } from "../HeadLogoText";
+import Recordmodal from "../Recordmodal";
 
 export default function Header() {
   const { logoutHandlerFunc } = useUser();
@@ -32,8 +33,19 @@ export default function Header() {
           </div>
         </div>
         <div className="flex items-center gap-5">
+          <div>
+            <Recordmodal
+              text={"+ Record"}
+              bg={"bg-blue-500"}
+              tcolor={"text-white"}
+              rounded={"rounded-2xl"}
+              width={"w-[100px]"}
+              height={"h-[20px]"}
+              hover={"hover:bg-blue-600"}
+            />
+          </div>
           <button
-            className="bg-black rounded-md text-white"
+            className="bg-black rounded-2xl text-white w-[99px] h-[32px]"
             onClick={logoutHandlerFunc}
           >
             Log out
