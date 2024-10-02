@@ -19,13 +19,13 @@ app.use(cors());
 app.use(express.json());
 
 // API маршрутуудыг тохируулах
-app.use("/api", userRouter);
-app.use("/api", categoryRouter);
-app.use("/api", currencyRouter);
-app.use("/api", balanceRouter);
-app.use("/api", checkRouter);
-app.use("/api", incomeRouter);
-app.use("/api", testRouter);
+app.use("/", userRouter);
+app.use("/", categoryRouter);
+app.use("/", currencyRouter);
+app.use("/", balanceRouter);
+app.use("/", checkRouter);
+app.use("/", incomeRouter);
+app.use("/", testRouter);
 
 // Серверийг ажиллуулах
 app.listen(port, () =>

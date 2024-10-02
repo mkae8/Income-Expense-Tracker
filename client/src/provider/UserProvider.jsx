@@ -13,7 +13,7 @@ export const UserProvider = ({ children }) => {
 
   const loginHandlerFunc = async (email, password) => {
     try {
-      const result = await axios.post("http://localhost:8000/api/user/login", {
+      const result = await axios.post("http://localhost:8000/user/login", {
         email,
         password,
       });
